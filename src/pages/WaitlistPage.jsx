@@ -5,6 +5,9 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import styles from './WaitlistPage.module.css'
 
+// Generate grid lines
+const gridLines = Array.from({ length: 24 }, (_, i) => i)
+
 export default function WaitlistPage() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle') // idle, loading, success, error
@@ -25,8 +28,37 @@ export default function WaitlistPage() {
       <Navbar />
       <main className={styles.main}>
         <div className={styles.background}>
-          <div className={styles.leftAbstract} />
-          <div className={styles.rightAbstract} />
+          {/* Left Abstract - Colored ellipses */}
+          <div className={styles.leftAbstract}>
+            <div className={styles.ellipseGroup}>
+              <div className={styles.ellipse} style={{ background: 'rgba(138, 67, 225, 1)', top: '207px', left: '0' }} />
+              <div className={styles.ellipse} style={{ background: 'rgba(213, 17, 253, 1)', top: '363px', left: '37px' }} />
+              <div className={styles.ellipse} style={{ background: 'rgba(239, 123, 22, 1)', top: '0', left: '213px' }} />
+              <div className={styles.ellipse} style={{ background: 'rgba(255, 47, 47, 1)', top: '80px', left: '9px' }} />
+            </div>
+          </div>
+          
+          {/* Right Abstract - Colored ellipses */}
+          <div className={styles.rightAbstract}>
+            <div className={styles.ellipseGroup}>
+              <div className={styles.ellipse} style={{ background: 'rgba(138, 67, 225, 1)', top: '207px', left: '0' }} />
+              <div className={styles.ellipse} style={{ background: 'rgba(213, 17, 253, 1)', top: '363px', left: '37px' }} />
+              <div className={styles.ellipse} style={{ background: 'rgba(239, 123, 22, 1)', top: '0', left: '213px' }} />
+              <div className={styles.ellipse} style={{ background: 'rgba(255, 47, 47, 1)', top: '80px', left: '9px' }} />
+            </div>
+          </div>
+          
+          {/* Vertical Grid Lines */}
+          <div className={styles.gridLines}>
+            {gridLines.map((i) => (
+              <div key={i} className={styles.gridLine} />
+            ))}
+          </div>
+          
+          {/* Gradient overlay */}
+          <div className={styles.bgGradient} />
+          
+          {/* Noise texture */}
           <div className={styles.noise} />
         </div>
 

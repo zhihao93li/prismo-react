@@ -2,55 +2,95 @@
   position: relative;
   min-height: 100vh;
   padding: 150px 40px 100px;
-  background: var(--light-94);
+  background: var(--light-95);
+  overflow: hidden;
 }
 
 .background {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
+  top: 0;
+  left: -120px;
+  right: -120px;
+  bottom: 0;
   z-index: 0;
+  background: var(--light-95);
+}
+
+/* Vertical grid lines */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gridLine {
+  flex: 1;
+  height: 100%;
+  border-right: 1px solid rgba(222, 216, 211, 0.35);
+}
+
+.gridLine:last-child {
+  border-right: none;
 }
 
 .leftAbstract,
 .rightAbstract {
   position: absolute;
-  width: 400px;
-  height: 600px;
-  filter: blur(120px);
-  opacity: 0.5;
+  width: 420px;
+  height: 571px;
 }
 
 .leftAbstract {
   top: 0;
-  left: -100px;
-  background: linear-gradient(
-    180deg,
-    rgba(239, 123, 22, 0.6),
-    rgba(255, 47, 47, 0.6),
-    rgba(138, 67, 225, 0.6),
-    rgba(213, 17, 253, 0.6)
-  );
+  left: 0;
 }
 
 .rightAbstract {
   top: 0;
-  right: -100px;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.ellipseGroup {
+  position: absolute;
+  width: 420px;
+  height: 571px;
+  filter: blur(80px);
+}
+
+.ellipse {
+  position: absolute;
+  width: 207px;
+  height: 207px;
+  border-radius: 50%;
+}
+
+/* Gradient overlays */
+.bgGradient {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(213, 17, 253, 0.6),
-    rgba(138, 67, 225, 0.6),
-    rgba(255, 47, 47, 0.6),
-    rgba(239, 123, 22, 0.6)
+    rgba(244, 242, 241, 0) 0%,
+    rgba(244, 242, 241, 0.6) 50%,
+    rgba(244, 242, 241, 0.9) 100%
   );
+  pointer-events: none;
+  z-index: 2;
 }
 
 .noise {
   position: absolute;
   inset: 0;
   background-image: url('https://framerusercontent.com/images/6mcf62RlDfRfU61Yg5vb2pefpi4.png');
-  opacity: 0.63;
+  background-size: 200px;
+  opacity: 0.5;
   pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 3;
 }
 
 .container {
