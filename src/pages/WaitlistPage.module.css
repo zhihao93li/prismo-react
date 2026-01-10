@@ -16,49 +16,73 @@
   background: var(--light-95);
 }
 
-/* Vertical grid lines */
+/* Vertical grid lines - SubContainer with VerticalBlocks */
 .gridLines {
   position: absolute;
   inset: 0;
   display: flex;
-  justify-content: space-between;
   pointer-events: none;
   z-index: 1;
+  mix-blend-mode: normal;
 }
 
 .gridLine {
-  flex: 1;
+  flex: 1 1 0;
   height: 100%;
-  border-right: 1px solid rgba(222, 216, 211, 0.35);
+  position: relative;
+  /* 截图还原：水平渐变背景 */
+  background: linear-gradient(270deg, rgba(242, 240, 238, 0.2) 0%, rgba(242, 240, 238, 0) 100%);
+  /* 截图还原：毛玻璃效果 */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 
-.gridLine:last-child {
-  border-right: none;
+/* 截图还原：使用 ::after 画右边框 */
+.gridLine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  /* 截图还原：白色 0.1 透明度 */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.gridLine:last-child::after {
+  display: none;
+}
+
+/* 清理掉之前的 ::before 实现 */
+.gridLine::before {
+  display: none;
 }
 
 .leftAbstract,
 .rightAbstract {
   position: absolute;
-  width: 420px;
+  width: 378px;
   height: 571px;
 }
 
 .leftAbstract {
   top: 0;
-  left: 0;
+  left: -80px;
 }
 
 .rightAbstract {
   top: 0;
-  right: 0;
+  right: -80px;
   transform: rotate(180deg);
 }
 
 .ellipseGroup {
   position: absolute;
-  width: 420px;
+  width: 378px;
   height: 571px;
-  filter: blur(80px);
+  filter: blur(120px);
+  /* 还原真实数据：全不透明 */
+  opacity: 1;
 }
 
 .ellipse {
