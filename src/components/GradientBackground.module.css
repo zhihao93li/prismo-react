@@ -138,8 +138,8 @@
   background-size: 200px;
   pointer-events: none;
   mix-blend-mode: overlay;
-  /* 默认透明度 */
-  opacity: 0.75;
+  /* 大屏幕下降低噪点透明度 */
+  opacity: 0.4;
   /* 噪点在最上层 */
   z-index: 4;
 }
