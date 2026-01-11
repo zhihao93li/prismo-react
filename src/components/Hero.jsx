@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { GoogleLogo, Star, StarHalf } from '@phosphor-icons/react'
 import Button from './Button'
@@ -5,6 +6,20 @@ import GradientBackground from './GradientBackground'
 import styles from './Hero.module.css'
 
 export default function Hero() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 滚动 1px 就开始触发放大
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <section className={styles.hero}>
       <GradientBackground />
@@ -56,7 +71,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className={styles.imageWrapper}>
+          <div className={`${styles.imageWrapper} ${isScrolled ? styles.imageWrapperScrolled : ''}`}>
             <img 
               src="https://framerusercontent.com/images/BesZqi2DRImbj4FXrPED12W5zA.png" 
               alt="Prismo Dashboard"

@@ -124,6 +124,16 @@
   /* 加上一点毛玻璃效果，让边框更通透 */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  /* 初始状态：缩小，使用 transform-origin 从顶部缩放，保持位置 */
+  transform: scale(0.9);
+  transform-origin: center top;
+  /* 放大过渡更慢一点 */
+  transition: transform 0.8s ease-out;
+}
+
+/* 滚动后放大到正常尺寸 */
+.imageWrapperScrolled {
+  transform: scale(1);
 }
 
 .dashboardImage {

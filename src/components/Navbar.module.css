@@ -1,22 +1,39 @@
 .navbar {
   position: fixed;
-  top: 20px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1160px;
+  max-width: 1200px;
   z-index: 1000;
+  padding: 20px 40px;
+  transition: all 0.3s ease;
+}
+
+/* 滚动后的悬浮样式 */
+.navbar.scrolled {
+  top: 20px;
+  max-width: 1000px;
   padding: 0 20px;
+}
+
+.navbar.scrolled .container {
+  background: var(--absolute-white);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 8px 8px 8px 24px;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--absolute-white);
-  border-radius: var(--radius-full);
-  padding: 8px 8px 8px 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* 默认透明背景 */
+  background: transparent;
+  border-radius: 0;
+  padding: 8px 0;
+  box-shadow: none;
+  transition: all 0.3s ease;
 }
 
 .logo {
